@@ -1,0 +1,16 @@
+{
+  "name": "spider",
+  "version": "1.0.0",
+  "description": "- 大模型会把每一个词用数字来表示\r 今天 天气\r 1   +   2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "x-crawl": "^10.1.0"
+  }
+}

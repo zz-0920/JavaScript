@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <button id="start-button" class="start-button">开始播放</button>
+    
+    <div id="video-container" class="container hidden">
+        <div class="video-desc">
+          绘梨衣：Sakura, 我们是在海棠花树下见面吗~
+        </div>
+        <div class="wrapper">
+            <video class="flex" src="./video.mp4" controls></video>
+            <!-- 滑块 -->
+            <div class="speed">
+                <div class="speed-bar">1x</div>
+            </div> 
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>

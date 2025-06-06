@@ -40,7 +40,4 @@ console.log(bool1.toString()); // 'true'
 
 let sym = Symbol('hello'); // Symbol
 let sym1 = Symbol('hello'); // Symbol
-
-console.log(str === str1); // true
 console.log(sym === sym1); // false
-// 引用数据类型

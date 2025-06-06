@@ -9,6 +9,6 @@ let p1 = {
     name: 'zs',
     age: 20,
 }
-p2 = foo(p1);
+let p2 = foo(p1);
 console.log(p1);
 console.log(p2);

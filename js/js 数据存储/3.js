@@ -10,7 +10,7 @@
      var a = {name:'zs'}
      var b = a
      a.name = 'zz'
-     console.log(a);
-     console.log(b);
+     console.log(a); // zz
+     console.log(b); // zz
  }
  foo()

@@ -9,23 +9,27 @@
             margin: 0;
             padding: 0;
         }
-        .list{
-            font-size: 0;
-        }
         li{
             height: 100px;
             width: 300px;
-            display: inline-block;
-            font-size: 20px;
+            float: left;
         }
         li:nth-child(1){
-            background-color: rgb(115, 255, 0);
+            background-color: red;
         }
         li:nth-child(2){
             background-color: green;
         }
         li:nth-child(3){
             background-color: blue;
+        }
+        /* .list::after{
+            content: '';
+            clear: both;
+            display: block;
+        } */
+        .list {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -35,5 +39,8 @@
         <li>2</li>
         <li>3</li>
     </ul>
+
+    <h2 class="title">hello</h2>
+
 </body>
 </html>

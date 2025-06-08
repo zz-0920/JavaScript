@@ -14,8 +14,12 @@ let obj = {
     }
 }
 
+// obj.girlfriend = 'ls'; // 添加对象的属性
+// delete obj.smoke; // 删除对象的属性
+let zsGirl = 'myGirl';
+obj[zsGirl] = 'ls'; // 添加对象的属性
 console.log(obj);
-delete obj.smoke; // 删除对象的属性
+console.log(obj[zsGirl]);
 
 let obj1 = new Object({
     name: 'zz',

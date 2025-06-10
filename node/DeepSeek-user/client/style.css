@@ -1,0 +1,29 @@
+body{
+    margin: 20px;
+  }
+  .search-container{
+    margin-bottom: 20px;
+  }
+  #userTable{
+    width: 60%;
+    border-collapse: collapse;
+  }
+  th, td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th{
+    background-color: #f2f2f2;
+  }
+  #nameSearch{
+    padding: 6px;
+    margin-right: 10px;
+  }
+  button{
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+  }

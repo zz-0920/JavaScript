@@ -1,0 +1,34 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "zz",
+        "age": 18,
+        "address": "南昌"
+      },
+      {
+        "id": 2,
+        "name": "zs",
+        "age": 29,
+        "address": "抚州"
+      },
+      {
+        "id": 3,
+        "name": "yy",
+        "age": 25,
+        "address": "吉安"
+      },
+      {
+        "id": 4,
+        "name": "ys",
+        "age": 30,
+        "address": "赣州"
+      },
+      {
+        "id": 5,
+        "name": "yz",
+        "age": 18,
+        "address": "赣州"
+      }
+    ]
+  }

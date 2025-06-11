@@ -1,0 +1,18 @@
+<script>
+    function GrandParent() {
+        this.name = 'grandparent'
+        this.card = 'visa'
+    }
+    Parent.prototype = new GrandParent()
+    function Parent() {
+        this.lastName = 'z'
+    }
+    Child.prototype = new Parent()
+    function Child() {
+        this.name = 'zz'
+        this.age = 18
+    }
+    const c = new Child()
+    console.log(c.card); // visa
+    console.log(c.lastName); // z
+</script>

@@ -1,0 +1,17 @@
+<script>
+    Person.prototype.age = 18
+    function Person(){
+        
+        // new 的实现
+        // var ojb = {} // 1
+        // Person.call(obj) // 2 让 this === obj
+        // this.name = 'zz' // 3
+        // obj.__proto__ = Person.prototype // 4
+        // return obj // 5
+    }
+    const p = new Person()
+    // console.log(p.__proto__.constructor); // 实例对象的隐式原型 === 构造函数显式原型上面的属性
+    // console.log(p.prototype);
+    // console.log(p.__proto__ === Person.prototype); // true
+    console.log(p.age); // 18
+</script>

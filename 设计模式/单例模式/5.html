@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单例模式弹框</title>
+  <style>
+    #model{
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #000;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn1">open</button>
+  <button id="btn2">close</button>
+  <button id="btn3">open2</button>
+
+  <script>
+    let btn1 = document.getElementById('btn1')
+    let btn2 = document.getElementById('btn2')
+    let btn3 = document.getElementById('btn3')
+
+    // function showModel () {
+    //   let model = document.createElement('div')
+    //   model.innerHTML = '我是弹窗'
+    //   model.id = 'model'
+    //   model.style.display = 'block'
+    //   document.body.appendChild(model)
+    // }
+
+    const Model = (function() {
+      let model = null
+      return function() {
+        if (!model) {
+          model = document.createElement('div')
+          model.innerHTML = '我是弹窗'
+          model.id = 'model'
+          model.style.display = 'none'
+          document.body.appendChild(model)
+        }
+        return model
+      }
+    })()
+
+
+    btn1.addEventListener('click', function() {
+      const model = Model()
+      model.style.display = 'block'
+    }) 
+
+    btn2.addEventListener('click', function(){
+      const model = Model() // 获取到 open 按钮创建的弹框
+      if (model) {
+        model.style.display = 'none'
+      }
+    })
+
+    btn3.addEventListener('click', () => {
+      const model = Model() // 获取到 open2 按钮创建的弹框
+      model.style.display = 'block'
+    })
+  </script>
+</body>
+</html>

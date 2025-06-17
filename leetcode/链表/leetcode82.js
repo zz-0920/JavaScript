@@ -1,6 +1,5 @@
 var deleteDuplicates = function(head) {
     if (!head) return null;
-    
     const dummy = new ListNode(0);
     dummy.next = head;
     let prev = dummy;  

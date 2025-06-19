@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="username">
+        <input type="password" id="password">
+        <button id="btn">登录</button>
+    </div>
+    <script>
+        let btn = document.getElementById('btn')
+        let username = document.getElementById('username')
+        let password = document.getElementById('password')
+        btn.addEventListener('click', () => {
+            let user = username.value
+            let pass = password.value
+            fetch(`http://192.168.1.93:3000/login?username=${user}&password=${pass}`,{
+                method: 'GET'
+            }).then((response) => {
+                return response.json()
+            }).then((data) => {
+                console.log(data);
+            })
+        })
+      </script>
+</body>
+</html>

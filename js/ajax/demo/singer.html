@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">获取歌手信息</button>
+    <div id = "app">
+        <ul id="list"></ul>
+    </div>
+    
+    <script>
+        let btn = document.getElementById("btn");
+        let rowDate = [];
+        btn.addEventListener("click",() => {
+            // 获取歌手数据
+            getData().then(() => {
+                renderList(rowDate)
+            })
+        })
+
+        function getData(){
+            return new Promise((resolve,reject) => {
+                const xhr = new XMLHttpRequest(); // 创建异步对象
+                xhr.open('GET', 'https://mock.mengxuegu.com/mock/66585c4db462b81cb3916d3e/songer/songer', true); // 准备请求的参数
+                xhr.send(); // 发送请求
+                // 检测请求的发送结果
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) { // 请求成功
+                        // 处理请求结果
+                        let data = JSON.parse(xhr.responseText); // 把 json 字符串转换为 json 对象
+                        // console.log(xhr.responseText); // 打印请求结果
+                        console.log(data.data); // 打印请求结果
+                        renderList(data.data);
+                        rowDate = data.data;
+                    }
+                }
+                resolve()
+            })
+        }
+
+        function renderList(arr){
+            let list = document.getElementById("list");
+            for(let i = 0; i < arr.length; i++){
+                let item = arr[i]
+                let li = document.createElement("li");
+                li.innerText = `${item.name} -- ${item.songsCount}`;
+                list.appendChild(li);
+            }
+        }
+        
+</script>
+</body>
+</html>

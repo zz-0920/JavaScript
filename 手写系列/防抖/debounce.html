@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">提交</button>
+
+  <script>
+    let btn = document.getElementById('btn')
+
+    function handle(e) {
+      // console.log(e.x, e.y)
+      console.log('向后端发请求', this)
+    }
+    btn.addEventListener('click', debounce(handle, 1000))
+
+
+    function debounce(fn, wait) {
+      var timer = null
+      return function(...arg) {
+        let that = this
+        clearTimeout(timer)
+        timer = setTimeout(function() {
+          fn.call(that, ...arg)
+        }, wait)
+      }
+    }
+    
+  </script>
+</body>
+</html>

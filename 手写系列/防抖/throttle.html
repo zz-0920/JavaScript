@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">确认</button>
+
+  <script>
+    let btn = document.getElementById('btn')
+
+    function handle() {
+      console.log('向后端发请求', this);
+    }
+    btn.addEventListener('click', throttle(handle, 2000))
+
+
+    function throttle(fn, wait) {
+      let preTime = 0
+      return function(...arg) {
+        let nowTime = Date.now()  // 第一次点击的时间戳
+        if (nowTime - preTime >= wait) {
+          fn.call(this, ...arg)
+          preTime = nowTime
+        }
+      }
+    }
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    /* 移除固定宽度，让页面自适应屏幕宽度 */
+    max-width: 100%;
+    overflow-x: hidden; /* 防止水平滚动 */
+}
+ul li {
+    list-style: none;
+}
+
+.list {
+    display: flex;
+    margin: 0 50px;
+}
+
+.list__item {
+    margin-right: 50px;
+}
+
+.store__nav {
+    display: flex;
+    padding: 0 149px;
+    height: 100px;
+    align-items: center;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 100%; /* 添加这行 */
+    box-sizing: border-box;
+    z-index: 999;
+    background-color: white;
+}
+
+.store__nav__logo {
+    width: 64px;
+    height: 64px;
+}
+
+.store__nav__logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.store__nav__list {
+    flex: 1;
+    font-size: 25px;
+}
+
+.button--primary {
+    width: 85px;
+    height: 53px;
+    font-size: 25px;
+    border-radius: 5px 5px 5px 5px;
+    border: none;
+}
+
+.login {
+    background-color: white;
+    color: black;
+}
+
+.register {
+    background-color: black;
+    color: white;
+}
+
+.store-search {
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 添加垂直居中 */
+}
+
+.search-box {
+    /* 移除 width: 100% */
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 让搜索框内容居中 */
+}
+
+.search-box__input {
+    width: 1195px; /* 设置固定宽度为1195px */
+    max-width: 1195px;
+    height: 80px;
+    font-size: 25px;
+    border-radius: 12px;
+    border: 1px solid #000;
+    position: relative;
+    border: none;
+    outline: none;
+    margin: 0 auto; /* 确保输入框居中 */
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding-left: 70px;
+    padding-right: 140px;
+}
+
+.search-button {
+    width: 124px;
+    height: 62px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    border-radius: 12px;
+    transform: translateY(-50%);
+    font-size: 25px;
+    background-color: #000;
+    color: white;
+}
+
+.search-img {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 25px;
+}
+
+.search-hot {
+    font-size: 22px;
+    margin-top: 12px;
+    color: #6b7280;
+}
+
+.search-hot a {
+    font-size: 22px;
+    color: #6b7280;
+    text-decoration: none;
+    margin-left: 12px;
+}
+
+.category-title {
+    padding: 0 149px;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.05);
+    padding-bottom: 13px;
+    box-sizing: border-box;
+}
+
+.category-title-list {
+    display: flex;
+}
+
+.list-item:nth-child(1) {
+    color: black;
+}
+
+.list-item {
+    font-size: 25px;
+    color: #4b5563;
+    margin-left: 50px;
+    cursor: pointer
+}
+
+.category-content {
+    background-color: #F9FAFB;
+    padding: 46px 100px 149px 100px;
+}
+
+.category-content img {
+    width: 100%;
+    height: 100%;
+}
+
+.content-banner {
+    width: 100%;
+    height: 100%;
+}
+
+.content-list__item__img {
+    width: 24%;
+    height: 100%;
+    margin-right: 1%;
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.content-list__item__img img {
+    width: 80%;
+    height: 80%;
+    display: block;
+    margin: 36px auto;
+}
+
+.content-list__item {
+    display: flex;
+}
+
+.content-list__item__img__title {
+    font-size: 25px;
+    color: #4b5563;
+    margin: 12px 40px;
+}
+
+.content-title {
+    margin-top: 13px;
+    margin-bottom: 13px;
+    font-size: 37px;
+}
+
+.price {
+    color: red;
+    margin: 12px 40px;
+    font-size: 25px;
+}
+
+.limited {
+    margin-top: 36px;
+    padding: 27px;
+    background-color: #fff;
+    border-radius: 9px 9px 9px 9px;
+}
+
+.limited-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+}
+
+.countdown {
+    display: flex;
+    align-items: center;
+}
+
+.countdown-text {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #000;
+}
+
+.time-box {
+    display: flex;
+    align-items: center;
+}
+
+.time-unit {
+    background-color: #000;
+    color: white;
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 0 2px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.time-separator {
+    margin: 0 4px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.limited-item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.limited-list {
+    margin-right: 15px;
+    width: calc(16.666% - 15px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.limited-list img {
+    width: 100%;
+    border-radius: 9px;
+    margin-bottom: 8px;
+}
+
+.limited-list .p1,
+.limited-list .p2 {
+    margin: 2px 0;
+    width: 100%;
+}
+
+.p1 {
+    width: 100%;
+    font-family: Roboto, Roboto;
+    font-weight: 600;
+    font-size: 18px;
+    color: #DC2626;
+    line-height: 27px;
+    text-align: center;
+    font-style: normal;
+    text-transform: none;
+}
+
+.p2 {
+    width: 100%;
+    font-family: Roboto, Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #9CA3AF;
+    line-height: 22px;
+    text-align: center;
+    font-style: normal;
+    text-decoration-line: line-through;
+    text-transform: none;
+}
+.store-foot{
+    display: flex;
+    padding: 40px 60px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* 允许换行 */
+    position: relative;
+}
+
+.store-foot > div {
+    flex: 1;
+    margin: 0 15px;
+    min-width: 0;
+}
+
+/* 让版权信息独占一行 */
+.store-foot > div:last-child {
+    flex-basis: 100%; /* 占满整行 */
+    margin-right: 0;
+    margin-top: 20px; /* 添加上边距 */
+}
+
+/* 移除第一个div的左边距 */
+.store-foot > div:first-child {
+    margin-left: 0;
+}
+.store-foot p{
+    font-size: 22px;
+    color: #6b7280;
+    margin-left: 24px;
+}
+.store-foot a{
+    display: block;
+    font-size: 22px;
+    color: #6b7280;
+    text-decoration: none;
+}
+.store-foot a:nth-child(1){
+    margin-top: 12px;
+}
+.store-foot .phone{
+    font-size: 32px;
+    color: #000;
+    margin-top: 12px;
+    margin-left: 24px; /* 保持左边距一致 */
+}
+.store-foot .copyright{
+    display: block;
+    font-size: 22px;
+    color: #6b7280;
+    margin-top: 12px;
+    text-align: center; /* 居中对齐 */
+    width: 100%; /* 占满父容器宽度 */
+}
+.foot-icon {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center; /* 水平居中 */
+    gap: 10px; /* 图标之间的间距 */
+    position: absolute;
+    right: 100px;
+    top: 50px;
+}
+
+.store-foot .icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 0; /* 移除右边距，因为现在是垂直排列 */
+    margin-bottom: 10px; /* 添加下边距 */
+}
+
+/* 移除最后一个图标的下边距 */
+.store-foot .icon:last-child {
+    margin-bottom: 0;
+}

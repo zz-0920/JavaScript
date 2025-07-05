@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 确保html和body占满整个视口 */
+html, body, #root {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Layout组件占满整个高度 */
+.layout-container {
+    height: 100vh;
+}
+
+/* 侧边栏样式 */
+.demo-logo-vertical {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.3);
+}

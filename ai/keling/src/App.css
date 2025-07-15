@@ -1,0 +1,168 @@
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  min-height: 100vh;
+}
+
+/* 主容器样式 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  gap: 30px;
+  min-height: 100vh;
+  align-items: stretch;
+}
+
+/* 左侧输入区域 */
+.container > div:first-child {
+  flex: 1;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1);
+  border: 1px solid rgba(33, 150, 243, 0.1);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 标签样式 */
+label {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 15px;
+}
+
+/* 文本域样式 */
+.prompt-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 20px;
+  border: 2px solid #e3f2fd;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: inherit;
+  resize: vertical;
+  background: #fafafa;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.prompt-textarea:focus {
+  outline: none;
+  border-color: #2196f3;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.prompt-textarea::placeholder {
+  color: #90caf9;
+}
+
+/* 按钮样式 */
+button {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+  width: 100%;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(33, 150, 243, 0.3);
+}
+
+/* 右侧输出区域 */
+.output {
+  flex: 1;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1);
+  border: 1px solid rgba(33, 150, 243, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+/* 图片样式 */
+.output img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.output img:hover {
+  transform: scale(1.02);
+}
+
+/* 空状态样式 */
+.output:empty::before {
+  content: '生成的图片将在这里显示';
+  color: #90caf9;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px 15px;
+    gap: 20px;
+  }
+  
+  .container > div:first-child,
+  .output {
+    padding: 20px;
+  }
+  
+  .prompt-textarea {
+    min-height: 150px;
+  }
+}
+
+/* 加载动画 */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}

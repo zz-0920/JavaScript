@@ -1,0 +1,151 @@
+.result-container {
+  height: 100vh;
+  background-color: #F0F7FF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+
+  &-hd {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+
+    &-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1F2937;
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  &-bd {
+    flex: 1;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+
+    &-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #15B8A6;
+      margin: 0 0 20px 0;
+      text-shadow: 0 2px 4px rgba(21, 184, 166, 0.2);
+    }
+
+    &-desc {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.6;
+      margin: 0 0 30px 0;
+      padding: 20px;
+      background-color: #F9FAFB;
+      border-radius: 12px;
+    }
+
+    &-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        min-width: 120px;
+
+        &-primary {
+          background-color: #15B8A6;
+          color: #fff;
+
+          &:hover {
+            background-color: #0F766E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(21, 184, 166, 0.3);
+          }
+        }
+
+        &-secondary {
+          background-color: #F9FAFB;
+          color: #374151;
+          border: 2px solid #E5E7EB;
+
+          &:hover {
+            background-color: #F3F4F6;
+            border-color: #15B8A6;
+            color: #15B8A6;
+          }
+        }
+      }
+    }
+  }
+
+  // 响应式设计
+  @media (max-width: 480px) {
+
+    &-hd {
+      margin-bottom: 15px;
+
+      &-title {
+        font-size: 1.25rem;
+      }
+    }
+
+    &-bd {
+      padding: 20px;
+
+      &-title {
+        font-size: 1.5rem;
+      }
+
+      &-desc {
+        font-size: 0.9rem;
+        padding: 15px;
+      }
+
+      &-actions {
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+          width: 100%;
+          max-width: 200px;
+        }
+      }
+    }
+  }
+
+  // 添加一些动画效果
+  &-hd, &-bd {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  &-bd {
+    animation-delay: 0.2s;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,48 @@
+.home-container {
+  padding: 0 1rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  .home-box{
+    width: 100%;
+  }
+
+  .home-box-hd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+      width: 12rem;
+      height: 12rem;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+    .title{
+      font-size: 1rem;
+      color: #1F2937;
+      margin-top: 1.4rem;
+      font-weight: 500;
+    }
+    .desc{
+      font-size: 0.7rem;
+      color: #4B5563;
+      font-weight: 400;
+      margin-top: 7px;
+      margin-bottom: 2.1rem;
+    }
+  }
+  .home-box-btn{
+    width: 100%;
+    height: 2.5rem;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1);
+    font-size: 0.7rem;
+    color: #1F2937;
+    font-weight: 500;
+    text-align: center;
+    line-height: 2.5rem;
+  }
+}

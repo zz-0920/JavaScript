@@ -21,3 +21,4 @@ npm install allotment --save  实现拖动改变容器大小
 
 # zustand 仓库
 npm install zustand --save  状态管理
+- 

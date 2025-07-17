@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useComponentsStore } from "../../stores/components"
 
 export default function EditArea() {
-const { components, addComponent } = useComponentsStore()
+const { components, addComponent, deleteComponent } = useComponentsStore()
 
 useEffect(() => {
   addComponent({
@@ -13,6 +13,10 @@ useEffect(() => {
     },
     desc: '按钮'
   }, 1)
+
+  setTimeout(() => {
+    deleteComponent(2)
+  }, 2000)
 }, [])
 
   return (

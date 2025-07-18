@@ -1,6 +1,11 @@
+import { useComponentsStore } from "../../stores/components"
 
 export default function Setting() {
   return (
-    <div>Setting</div>
+    <div>
+      <pre>
+        {JSON.stringify(useComponentsStore().components, null, 2)}
+      </pre>
+    </div>
   )
 }

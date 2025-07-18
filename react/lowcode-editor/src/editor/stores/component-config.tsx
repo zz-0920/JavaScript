@@ -52,23 +52,28 @@ export const useComponentConfigStore = create<State & Action>(
             },
             Button: {
                 name: 'Button',        // 按钮组件名称
-                defaultProps: {},      // 按钮组件默认属性（空对象）
+                defaultProps: {
+                    type: "primary",
+                    text: "按钮"
+                },      // 按钮组件默认属性（空对象）
                 component: Button      // 按钮组件的 React 组件引用
             },
             Page: {
                 name: 'Page',          // 页面组件名称
-                defaultProps: {},      // 页面组件默认属性（空对象）
+                defaultProps: {
+                    title: "页面"
+                },      // 页面组件默认属性（空对象）
                 component: Page        // 页面组件的 React 组件引用
             }
         },
-        
+
         /**
          * 动态注册新组件
          * 允许在运行时添加新的组件配置到系统中
          * @param name 要注册的组件名称
          * @param componentConfig 组件的配置对象
          */
-        registerComponent: (name, componentConfig) => {
+        registerComponent: (name: string, componentConfig: ComponentConfig) => {
             set((state) => ({
                 componentConfig: {
                     ...state.componentConfig,    // 展开现有的组件配置，保持不可变性

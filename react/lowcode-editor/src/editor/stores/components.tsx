@@ -44,8 +44,8 @@ export const useComponentsStore = create<State & Action>(
                     const parentComponent = getComponentById(parentId, state.components);
                     if (parentComponent) {
                         // 如果父组件已有子组件，追加到子组件列表；否则创建新的子组件列表
-                        parentComponent.children ? 
-                            parentComponent.children.push(component) : 
+                        parentComponent.children ?
+                            parentComponent.children.push(component) :
                             parentComponent.children = [component];
                     }
                     // 设置新组件的父组件ID
@@ -63,10 +63,10 @@ export const useComponentsStore = create<State & Action>(
         deleteComponent: (componentId) => {
             // 参数校验：如果没有提供组件ID，直接返回
             if (!componentId) return;
-            
+
             // 查找要删除的组件
             const component = getComponentById(componentId, get().components);
-            
+
             // 如果组件有父组件，从父组件的子组件列表中删除
             if (component?.parentId) {
                 const parentComponent = getComponentById(component.parentId, get().components);
@@ -111,7 +111,7 @@ export const useComponentsStore = create<State & Action>(
 export function getComponentById(componentId: number | null, components: Component[]): Component | null {
     // 参数校验：如果ID为空，返回null
     if (!componentId) return null
-    
+
     // 遍历组件列表
     for (let component of components) {
         // 如果找到匹配的ID，直接返回该组件

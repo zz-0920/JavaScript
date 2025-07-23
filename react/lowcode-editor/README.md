@@ -30,14 +30,17 @@ npm install allotment --save  实现拖动改变容器大小
 3. 定义了 renderComponents 函数用来将 整个 json 渲染成真实的 html 结构, 这里面借助 React.createElement 函数来实现递归渲染
 
 4. 实现物料区 组件 拖拽到 画布区
- react-dnd 跨组件传递
- react-dnd-html5-backend
+  1. react-dnd 跨组件传递
+     react-dnd-html5-backend
 
- 真的拖拽了一个组件名到 中间区域 就要将这个名字对应的组件对象 植入到 json 中
+  2. 真的拖拽了一个组件名到 中间区域 就要将这个名字对应的组件对象 植入到 json 中
  
- 借助 react-dnd 中的 useDrop 来接收组件
+  3. 借助 react-dnd 中的 useDrop 来接收组件
 
- 抽离useDrop代码, 封装成一个 hook
+  4. 抽离useDrop代码, 封装成一个 hook
 
-5. 当中间画布展示好了组件之后, 我们封装了一个 HoverMask 组件, 为了实现用户鼠标移入哪一个组件, 该组件被选中的效果
- - HoverMask: 接收一个组件类名, 通过 js 获取到该容器的几何属性, 动态的将 mask 容器也设置成相同的大小并覆盖在组件容器上
+  5. 当中间画布展示好了组件之后, 我们封装了一个 HoverMask 组件, 为了实现用户鼠标移入哪一个组件, 该组件被选中的效果
+    - HoverMask: 接收一个组件类名, 通过 js 获取到该容器的几何属性, 动态的将 mask 容器也设置成相同的大小并覆盖在组件容器上
+  
+  6. 点击展示组件的编辑框，并且可以移除组件，和hover不一样，点击还要在右侧展示对应的组件属性
+    - selectedMask：当用户点击画布中的某个组件是，我们实现跟 hoverMask 一样的蒙层效果

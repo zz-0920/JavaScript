@@ -38,7 +38,7 @@ export default function HoverMask({ componentId, componentName, containerRef }: 
     setVisible(true)
   }, [componentId, containerRef])
 
-  if (!visible) {
+  if (!visible || !componentId) {
     return null
   }
 
@@ -53,7 +53,7 @@ export default function HoverMask({ componentId, componentName, containerRef }: 
       }}
     >
       <div className="absolute -top-6 left-0 bg-blue-500 text-white text-xs px-2 py-1 rounded">
-        {componentName || `组件ID: ${componentId}`}
+        {componentName || (componentId ? `组件ID: ${componentId}` : '')}
       </div>
     </div>
   )

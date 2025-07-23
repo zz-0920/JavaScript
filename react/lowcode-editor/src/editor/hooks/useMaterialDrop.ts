@@ -29,13 +29,14 @@ export function useMaterialDrop(options: UseMaterialDropOptions) {
       
       // 获取组件默认属性
       const props = componentConfig?.[item.type]?.defaultProps
+      const desc = componentConfig?.[item.type]?.desc
       
       // 添加组件到存储
       addComponent({
         id: Date.now(),
         name: item.type,
         props: (props && Object.keys(props).length > 0) ? props : fallbackProps,
-        desc: item.type
+        desc: desc
       }, typeof id === 'number' ? id : undefined)
     },
     collect: (monitor) => ({

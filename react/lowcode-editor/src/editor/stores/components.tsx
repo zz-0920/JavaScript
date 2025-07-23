@@ -3,6 +3,8 @@ import { create } from 'zustand'
 // 状态接口定义 - 定义 store 中的状态结构
 export interface State {
     components: Component[], // 组件列表数组
+    curComponentID?: number | null, // 当前选中的组件ID
+    curComponent?: Component | null, // 当前选中的组件对象
 }
 
 // 操作接口定义 - 定义可以执行的操作方法
@@ -10,6 +12,7 @@ export interface Action {
     addComponent: (component: any, parentId?: number) => void,    // 添加组件方法
     deleteComponent: (componentId: number) => void,              // 删除组件方法
     updateComponent: (componentId: number, props: any) => void,  // 更新组件属性方法
+    setCurComponentID: (componentId: number | null) => void,       // 设置当前选中组件ID方法
 }
 
 // 组件数据结构定义
@@ -26,7 +29,7 @@ export interface Component {
 export const useComponentsStore = create<State & Action>(
     (set, get) => ({
         // 初始状态：组件列表，默认包含一个根页面组件
-        components: [
+        components: [ // 整个项目的json树
             {
                 id: 1,
                 name: 'Page',
@@ -34,7 +37,8 @@ export const useComponentsStore = create<State & Action>(
                 desc: '页面'
             }
         ],
-
+        curComponentID: null,
+        curComponent: null,
         // 添加组件方法
         addComponent: (component, parentId) => {
             set((state) => {
@@ -98,6 +102,13 @@ export const useComponentsStore = create<State & Action>(
                 // 如果没找到组件，返回原状态
                 return { components: [...state.components] }
             })
+        },
+
+        setCurComponentID: (componentId) => {
+            set((state) => ({
+                curComponentID: componentId,
+                curComponent: getComponentById(componentId, state.components)
+            }))
         }
     })
 )

@@ -1,5 +1,5 @@
 import type { CommonComponentProps } from '../../interface'
-import { useMaterialDrop } from '../../hooks/useMeterialDrop'
+import { useMaterialDrop } from '../../hooks/useMaterialDrop'
 
 export default function Container({id, children }: CommonComponentProps) {
   const { canDrop, isOver, dropRef } = useMaterialDrop({

@@ -13,6 +13,7 @@ export interface ComponentConfig {
     name: string;                      // 组件名称，用于标识组件类型
     defaultProps: Record<string, any>; // 组件的默认属性配置
     component: any                     // React 组件的实际引用
+    desc: string                       // 组件的描述信息
 }
 
 /**
@@ -48,7 +49,8 @@ export const useComponentConfigStore = create<State & Action>(
             Container: {
                 name: 'Container',     // 容器组件名称
                 defaultProps: {},      // 容器组件默认属性（空对象）
-                component: Container   // 容器组件的 React 组件引用
+                component: Container,  // 容器组件的 React 组件引用
+                desc: '容器'
             },
             Button: {
                 name: 'Button',        // 按钮组件名称
@@ -56,14 +58,16 @@ export const useComponentConfigStore = create<State & Action>(
                     type: "primary",
                     text: "按钮"
                 },      // 按钮组件默认属性（空对象）
-                component: Button      // 按钮组件的 React 组件引用
+                component: Button,     // 按钮组件的 React 组件引用
+                desc: '按钮'
             },
             Page: {
                 name: 'Page',          // 页面组件名称
                 defaultProps: {
                     title: "页面"
                 },      // 页面组件默认属性（空对象）
-                component: Page        // 页面组件的 React 组件引用
+                component: Page,       // 页面组件的 React 组件引用
+                desc: '页面'
             }
         },
 

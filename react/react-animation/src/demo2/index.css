@@ -1,0 +1,16 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    /* transform: rotate(45deg); */
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    0%{
+        transform: translateX(0px) translateY(0px) rotate(0deg);
+    }
+    100%{
+        transform: translateX(300px) translateY(300px) rotate(360deg);
+    }
+}

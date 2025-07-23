@@ -1,0 +1,17 @@
+.my-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px; /* 初始宽度 */
+  height: 60px;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.my-button.hovered {
+  width: 200px; /* 悬停时宽度 */
+  background-color: #0056b3; /* 悬停时背景色 */
+}

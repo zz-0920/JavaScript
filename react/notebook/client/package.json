@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "antd-mobile": "^5.40.0",
     "axios": "^1.11.0",
     "lib-flexible": "^0.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.7.0",
-    "react-vant": "^3.3.5"
+    "react-vant": "^3.3.5",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

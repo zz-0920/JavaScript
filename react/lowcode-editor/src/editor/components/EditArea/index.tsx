@@ -8,7 +8,7 @@ import SelectedMask from "../SelectedMask"
 import { useMaterialDrop } from "../../hooks/useMaterialDrop"
 
 export default function EditArea() {
-  const { components, setCurComponentID, curComponentID } = useComponentsStore()
+  const { components, setCurComponentID, curComponentID, mode } = useComponentsStore()
   const { componentConfig } = useComponentConfigStore()
   const [hoverComponentId, setHoverComponentId] = useState<number>()
   const containerRef = useRef<HTMLDivElement>(null)
@@ -40,7 +40,11 @@ export default function EditArea() {
       )
     })
   }
+
   const handleMouseMove = (e: React.MouseEvent) => {
+    // 预览模式下不处理鼠标悬浮
+    if (mode === 'preview') return
+    
     const path = e.nativeEvent.composedPath();
     for (let i = 0; i < path.length; i++) {
       const element = path[i];
@@ -60,6 +64,9 @@ export default function EditArea() {
 
   // 借助冒泡机制，点击页面上面的任何组件
   const handleClick = (e: React.MouseEvent) => {
+    // 预览模式下不处理点击选择
+    if (mode === 'preview') return
+    
     const path = e.nativeEvent.composedPath();
     for (let i = 0; i < path.length; i++) {
       const element = path[i];
@@ -95,6 +102,11 @@ export default function EditArea() {
   const getEditAreaStyle = () => {
     let baseClass = "h-[100%] edit-area relative"
     
+    // 预览模式使用不同的样式
+    if (mode === 'preview') {
+      return "h-full w-full overflow-auto bg-white"
+    }
+    
     // 当没有组件时，显示拖拽提示
     if (components.length === 0) {
       baseClass += " flex items-center justify-center"
@@ -119,7 +131,7 @@ export default function EditArea() {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      {components.length === 0 ? (
+      {components.length === 0 && mode !== 'preview' ? (
         <div className="text-gray-400 text-center">
           <div className="text-lg mb-2">📦</div>
           <div>拖拽组件到这里开始设计</div>
@@ -127,14 +139,14 @@ export default function EditArea() {
         </div>
       ) : null}
       {components.length > 0 ? renderComponents(components) : null}
-      {hoverComponentId && hoverComponentId !== 0 && (
+      {mode !== 'preview' && hoverComponentId && hoverComponentId !== 0 && (
         <HoverMask 
           componentId={hoverComponentId} 
           componentName={hoverComponent?.name || ''}
           containerRef={containerRef as React.RefObject<HTMLDivElement>} 
         />
       )}
-      {curComponentID && (
+      {mode !== 'preview' && curComponentID && (
         <SelectedMask 
           componentId={curComponentID}
           containerRef={containerRef as React.RefObject<HTMLDivElement>}

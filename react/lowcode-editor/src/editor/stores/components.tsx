@@ -5,6 +5,7 @@ export interface State {
     components: Component[], // 组件列表数组
     curComponentID?: number | null, // 当前选中的组件ID
     curComponent?: Component | null, // 当前选中的组件对象
+    mode: 'edit' | 'preview', // 编辑器模式：编辑模式或预览模式
 }
 
 // 操作接口定义 - 定义可以执行的操作方法
@@ -13,6 +14,7 @@ export interface Action {
     deleteComponent: (componentId: number) => void,              // 删除组件方法
     updateComponent: (componentId: number, props: any) => void,  // 更新组件属性方法
     setCurComponentID: (componentId: number | null) => void,       // 设置当前选中组件ID方法
+    setMode: (mode: 'edit' | 'preview') => void,                 // 设置编辑器模式方法
 }
 
 // 组件数据结构定义
@@ -29,7 +31,7 @@ export interface Component {
 export const useComponentsStore = create<State & Action>(
     (set, get) => ({
         // 初始状态：组件列表，默认包含一个根页面组件
-        components: [ // 整个项目的json树
+        components: [
             {
                 id: 1,
                 name: 'Page',
@@ -39,6 +41,8 @@ export const useComponentsStore = create<State & Action>(
         ],
         curComponentID: null,
         curComponent: null,
+        mode: 'edit', // 默认为编辑模式
+        
         // 添加组件方法
         addComponent: (component, parentId) => {
             set((state) => {
@@ -109,6 +113,14 @@ export const useComponentsStore = create<State & Action>(
                 curComponentID: componentId,
                 curComponent: getComponentById(componentId, state.components)
             }))
+        },
+        
+        setMode: (mode) => {
+            set({ mode })
+            // 预览模式下清除当前选中的组件
+            if (mode === 'preview') {
+                set({ curComponentID: null, curComponent: null })
+            }
         }
     })
 )

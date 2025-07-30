@@ -1,0 +1,114 @@
+.note-class-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #ffe9fe 0%, #d2eac7 100%); // 渐变背景
+
+    .note-class {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0 0.3866rem;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        // 移除 transform 和 transition，保持界面固定
+        z-index: 1;
+
+        // 移除滑动效果的类
+        // &.note-class-slide {
+        //     transform: translateX(80%);
+        // }
+
+        header {
+            display: flex;
+            height: 1.2rem;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 24px;
+
+            // 给导航图标添加点击样式
+            >div:first-child {
+                cursor: pointer;
+                padding: 8px;
+                border-radius: 8px;
+                transition: background-color 0.2s ease;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.05);
+                }
+
+                &:active {
+                    background-color: rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            .icon {
+                margin: 0 0.13rem;
+            }
+        }
+
+        section {
+            width: 100%;
+
+            .note-class-item {
+                height: 3.2rem;
+                border-radius: 0.3rem;
+                margin-bottom: 0.64rem;
+                box-sizing: border-box;
+                box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+
+                &-title {
+                    display: block;
+                    margin-top: 0.533rem;
+                    text-align: center;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    // 菜单样式 - 覆盖模式
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80%;
+        height: 100%;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 20; // 提高层级，确保覆盖在主界面上
+
+        // 菜单显示状态
+        &.menu-show {
+            transform: translateX(0);
+        }
+    }
+
+    // 遮罩层
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); // 增加遮罩透明度
+        z-index: 15; // 在主界面和菜单之间
+        animation: fadeIn 0.3s ease;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

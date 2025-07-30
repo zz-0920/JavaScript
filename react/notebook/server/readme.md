@@ -32,3 +32,11 @@
 - 方法：post
 - 请求体：{username, password}
 - 响应体：{code: 0, msg: '登录成功', data: {token: '123'}}
+
+2. 打造注册接口
+- 路由：/user/register
+- 方法：post
+- 请求体：{username, password}
+- 响应体：{code: 0, msg: '注册成功', data: {token: '123'}}
+
+- 防 sql 注入

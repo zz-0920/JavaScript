@@ -3,28 +3,36 @@ import styles from './index.module.less'
 import { Button, Input, Form } from 'react-vant'
 import { Toast } from 'antd-mobile' // 导入 antd-mobile 的 Toast
 import axios from '../../api/axios'
+import { useNavigate, useLocation } from 'react-router'
 
 export default function Login() {
+  const navigate = useNavigate()
+  const { state } = useLocation()
   const [form] = Form.useForm()
+  if (state) {
+    form.setFieldsValue(state)
+  }
 
   const onFinish = values => {
     // 发登录请求
     axios.post('/user/login', values).then(res => {
-      // console.log(res)
-      // 登录成功处理
-      if (res.code === '1') {
-        Toast.show({
-          icon: 'success',
-          content: '登录成功'
-        })
-        // 可以在这里添加跳转逻辑，比如：
-        // setTimeout(() => {
-        //   window.location.href = '/dashboard' // 或使用 react-router 的 navigate
-        // }, 1500)
-      }
+      // axios拦截器已经处理了code !== '1'的情况
+      // 能到这里说明登录成功了，res就是response.data
+      localStorage.setItem('userInfo', JSON.stringify(res.data))
+      localStorage.setItem('accessToken', res.accessToken)
+      localStorage.setItem('refreshToken', res.refreshToken)
+      Toast.show({
+        icon: 'success',
+        content: '登录成功'
+      })
+      // 登录成功后跳转
+      setTimeout(() => {
+        navigate('/noteClass')
+      }, 1500)
     }).catch(err => {
       // 错误处理已经在 axios 拦截器中处理了
-      console.log('登录失败:', err.data)
+      // 这里只需要记录日志即可
+      console.log('登录失败:', err.message || err)
     })
   }
 
@@ -64,7 +72,9 @@ export default function Login() {
           </Form.Item>
         </Form>
       </div>
-      <p className={styles['login-tips']}>
+      <p className={styles['login-tips']} onClick={() => {
+        navigate('/register')
+      }}>
         没有账号?点这里注册
       </p>
     </div>

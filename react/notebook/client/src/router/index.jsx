@@ -2,6 +2,12 @@ import { BrowserRouter, Navigate, useRoutes } from 'react-router'
 import React from 'react'
 
 const Login = React.lazy(() => import('../Pages/Login/index.jsx'))
+const NoteClass = React.lazy(() => import('../Pages/NoteClass/index.jsx'))
+const Register = React.lazy(() => import('../Pages/Register/index.jsx'))
+const NoteList = React.lazy(() => import('../Pages/NoteList/index.jsx'))
+const NoteDetail = React.lazy(() => import('../Pages/NoteDetail/index.jsx'))
+const NotePublish = React.lazy(() => import('../Pages/NotePublish/index.jsx'))
+
 const Routers = [
     {
         path: '/',
@@ -10,6 +16,26 @@ const Routers = [
     {
         path: '/login',
         element: <Login />
+    },
+    {
+        path: '/noteClass',
+        element: <NoteClass />
+    },
+    {
+        path: '/register',
+        element: <Register />
+    },
+    {
+        path: '/noteList',
+        element: <NoteList />
+    },
+    {
+        path: '/noteDetail',
+        element: <NoteDetail />
+    },
+    {
+        path: '/notePublish',
+        element: <NotePublish />
     }
 ]
 

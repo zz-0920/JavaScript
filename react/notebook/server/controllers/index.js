@@ -35,7 +35,31 @@ const userLogin = async (username, password) => {
     return await allServices.query(_sql);
 }
 
+const findUser = async (username) => {
+    const _sql = `select * from user where username='${username}'`;
+    return await allServices.query(_sql);
+}
+
+const register = async (username, password, nickname) => {
+    const _sql = `insert into user (username, password, nickname, create_time) values ('${username}', '${password}', '${nickname}', '${new Date().getTime()}')`;
+    return await allServices.query(_sql);
+}
+
+const findNodeListByType = async (note_type, userId) => {
+    const _sql = `select * from note where note_type='${note_type}' and user_id=${userId} order by create_time desc`;
+    return await allServices.query(_sql);
+}
+
+const findNoteDetailById = async (id) => {
+    const _sql = `select * from note where id=${id}`;
+    return await allServices.query(_sql);
+}
+
 module.exports = {
     allServices,
     userLogin,
+    findUser,
+    register,
+    findNodeListByType,
+    findNoteDetailById
 }

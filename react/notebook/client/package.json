@@ -10,8 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-vant/icons": "^0.1.0",
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-react": "^1.0.6",
     "antd-mobile": "^5.40.0",
     "axios": "^1.11.0",
+    "date-fns": "^4.1.0",
     "lib-flexible": "^0.3.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="/home">首页</a>
+        </li>
+        <li>
+            <a href="/about">关于</a>
+        </li>
+        <!-- 当 url 变更后，展示对应的代码片段 -->
+        <div id="root"></div>
+        <script>
+            const routes = [
+                {
+                    path: '/home',
+                    component: () => {
+                        return '<h1>首页</h1>'
+                    }
+                },
+                {
+                    path: '/about',
+                    component: () => {
+                        return '<h1>关于</h1>'
+                    }
+                }
+            ]
+            let rootElement = document.getElementById('root') // 重命名变量
+
+            window.addEventListener('DOMContentLoaded', () => {
+                onLoad()
+                routerView(location.pathname) // 初始化当前路由
+            })
+
+            function onLoad() { // 渲染路由
+                let linkList = document.querySelectorAll('a[href]')
+                linkList.forEach((el) => {
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault() // 阻止默认事件
+                        history.pushState(null,'',el.href) // 不进入浏览器的历史记录
+                        routerView(location.pathname) // 现在可以正确调用函数了
+                    })
+                })
+            }
+
+            function routerView(url) {
+                const index = routes.findIndex(item => item.path === url)
+                if (index !== -1) {
+                    rootElement.innerHTML = routes[index].component() // 使用重命名后的变量
+                }
+            }
+
+            window.addEventListener('popstate', () => { // 浏览器的回退按钮点击事件
+                routerView(location.pathname)
+            })
+
+        </script>
+    </ul>
+</body>
+
+</html>

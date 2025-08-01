@@ -8,11 +8,46 @@
 <body>
     <ul>
         <li>
-            <a href="/home">首页</a>
+            <a href="#/home">首页</a>
         </li>
         <li>
-            <a href="/about">关于</a>
+            <a href="#/about">关于</a>
         </li>
     </ul>
+    <!-- 当 url 变更后，展示对应的代码片段 -->
+    <div id="root"></div>
+    <script>
+        const routes = [
+            {
+                path: '/home',
+                component: () => {
+                    return '<h1>首页</h1>'
+                }
+            },
+            {
+                path: '/about',
+                component: () => {
+                    return '<h1>关于</h1>'
+                }
+            }
+        ]
+        
+        // 监听 url 变更
+        window.addEventListener('hashchange', () => {
+            console.log(location.hash)
+            routerView(location.hash)
+        })
+
+        // 封装路由方法
+        function routerView(url) {
+            const index = routes.findIndex(item => ("#" + item.path) === url)
+            if (index !== -1) {
+                document.getElementById('root').innerHTML = routes[index].component()
+            }
+        }
+
+        // 初始化路由
+        routerView(location.hash)
+    </script>
 </body>
 </html>

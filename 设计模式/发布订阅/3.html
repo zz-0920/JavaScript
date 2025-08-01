@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>1</h2>
+    <button>点我</button>
+    <script>
+        let h2 = document.querySelector('h2')
+        let btn = document.querySelector('button')
+        let obj = {
+            count: 1
+        }
+        let num = obj.count // 防止递归爆栈
+
+        function observer() {
+            // 找出页面上所有用到了 count 这个变量的 dom 结构 -- 找到订阅者
+            // 将订阅者的内容全部替换为最新的 count 变量
+            h2.innerHTML = num
+        }
+
+        Object.defineProperty(obj, 'count', {
+            get() {
+                return num
+            },
+            set(newValue) {
+                num = newValue
+                observer()
+            }
+        })
+
+        btn.addEventListener('click', () => {
+            obj.count++
+        })
+    </script>
+</body>
+
+</html>

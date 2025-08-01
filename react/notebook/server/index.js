@@ -5,18 +5,16 @@ const noteRouter = require('./router/note.js');
 const cors = require('@koa/cors');
 const { bodyParser } = require('@koa/bodyparser');
 
-// app.use(async ctx => {
-//     console.log(ctx);
-//     if (ctx.url === '/home') {
-//         ctx.body = 'Hello World';
-//     }
-// });
+app.use(cors());
 
-app.use(cors()); // 告诉浏览器，允许前端跨域请求我
-app.use(bodyParser()); // 辅助 koa 解析请求体中的数据
+// 修改这里：增加请求体大小限制
+app.use(bodyParser({
+  jsonLimit: '50mb',    // JSON请求体限制50MB
+  formLimit: '50mb',    // 表单请求体限制50MB
+  textLimit: '50mb',    // 文本请求体限制50MB
+  enableTypes: ['json', 'form', 'text']
+}));
 
-// 1. 被 app.use() 调用的函数中一点会有 ctx 参数，ctx 是 Koa 中的上下文对象
-// 2. userRouter.routes() 就是 user.js 中所有的 router
 app.use(userRouter.routes(), userRouter.allowedMethods());
 app.use(noteRouter.routes(), noteRouter.allowedMethods());
 

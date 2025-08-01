@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, useRoutes } from 'react-router'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const Login = React.lazy(() => import('../Pages/Login/index.jsx'))
 const NoteClass = React.lazy(() => import('../Pages/NoteClass/index.jsx'))
@@ -49,7 +49,9 @@ function AppRoutes() {
 export default function WrapperRouter() {
     return (
         <BrowserRouter>
-            <AppRoutes />
+            <Suspense fallback={<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>加载中...</div>}>
+                <AppRoutes />
+            </Suspense>
         </BrowserRouter>
     )
 }

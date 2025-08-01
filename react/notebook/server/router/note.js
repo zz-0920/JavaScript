@@ -1,6 +1,6 @@
 const Router = require('@koa/router');
 const router = new Router();
-const { userLogin, findUser, register, findNodeListByType, findNoteDetailById } = require('../controllers/index.js');
+const { userLogin, findUser, register, findNodeListByType, findNoteDetailById, notePublish } = require('../controllers/index.js');
 const { verify } = require('../utils/jwt.js');
 const { escape } = require('../utils/security.js');
 
@@ -40,5 +40,23 @@ router.get('/findNoteDetailById', verify(), async(ctx) => {
     }
 
 })
+
+router.post('/note-publish', verify(), async(ctx) => {
+    const { note_title, note_content, note_img, note_type, create_time, update_time } = ctx.request.body
+    try {
+        const res = await notePublish(note_title, note_content, note_img, note_type, create_time, update_time, ctx.userId);
+        ctx.body = {
+            code: '1',
+            msg: '发布成功',
+            data: {}
+        }
+    } catch (error) {
+        ctx.body = {
+            code: '0',
+            msg: '发布失败',
+            data: {}
+        }
+    }
+})  
 
 module.exports = router

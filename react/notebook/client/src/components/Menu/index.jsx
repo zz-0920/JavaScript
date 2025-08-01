@@ -1,6 +1,6 @@
 import styles from './index.module.less'
 import { Revoke, FriendsO, BarChartO, createFromIconfontCN } from '@react-vant/icons'
-import logo from '@/assets/logo.png'
+import logo from '../../assets/Logo.png'
 
 const IconFont = createFromIconfontCN(
     '//at.alicdn.com/t/c/font_4985759_1pwsih2v7fz.js'

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Toast } from 'antd-mobile' // 使用 antd-mobile 的 Toast
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://47.99.49.187:3000'
 // 告诉浏览器，如果发送的是 post 请求，那么后端一定会返回 json 数据，让浏览器以解析 json 的方式解析响应体
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 

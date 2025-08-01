@@ -2,12 +2,12 @@ import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import React, { useState, useEffect } from 'react'
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 
-function MyEditor() {
+function MyEditor(props) {
+
   // editor 实例
   const [editor, setEditor] = useState(null)
 
-  // 编辑器内容
-  const [html, setHtml] = useState('<p>hello</p>')
+  const { html, setHtml } = props
 
   // 工具栏配置
   const toolbarConfig = {
@@ -53,7 +53,7 @@ function MyEditor() {
           style={{ height: '200px', overflowY: 'hidden' }}
         />
       </div>
-      <div style={{ marginTop: '15px' }}>{html}</div>
+      {/* <div style={{ marginTop: '15px' }}>{html}</div> */}
     </>
   )
 }

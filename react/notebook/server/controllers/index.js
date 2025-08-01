@@ -55,11 +55,17 @@ const findNoteDetailById = async (id) => {
     return await allServices.query(_sql);
 }
 
+const notePublish = async (note_title, note_content, note_img, note_type, create_time, update_time, userId) => {
+    const _sql = `insert into note (note_title, note_content, note_img, note_type, create_time, update_time, user_id) values ('${note_title}', '${note_content}', '${note_img}', '${note_type}', '${create_time}', '${update_time}', '${userId}')`;
+    return await allServices.query(_sql);
+}
+
 module.exports = {
     allServices,
     userLogin,
     findUser,
     register,
     findNodeListByType,
-    findNoteDetailById
+    findNoteDetailById,
+    notePublish
 }

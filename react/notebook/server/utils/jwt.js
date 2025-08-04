@@ -6,9 +6,8 @@ function sign(options, time) {
     })
 }
 
-function verify(token) {
+function verify() {
     return async (ctx, next) => {
-        // 修复1: 正确提取token
         const authHeader = ctx.headers.authorization;
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
             ctx.status = 401;

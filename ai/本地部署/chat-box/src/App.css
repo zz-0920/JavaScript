@@ -1,0 +1,45 @@
+.container {
+  width: 80%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.container{
+  width: 80%;
+  height: 90vh;
+  margin: 0 auto;
+  border: 1px solid #d7d1d1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content{
+  flex: 1;
+  overflow-y: scroll;
+}
+.user{
+  text-align: right;
+}
+.item{
+  margin: 10px 0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+}
+.input{
+  display: flex;
+}
+.input input{
+  flex: 1;
+  font-size: 16px;
+  padding: 5px 20px;
+}
+.input button{
+  font-size: 16px;
+  padding: 5px 20px;
+  margin-left: 20px;
+}

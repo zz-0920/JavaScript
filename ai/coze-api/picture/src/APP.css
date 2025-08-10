@@ -1,0 +1,231 @@
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  gap: 30px;
+  font-size: 0.9rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.file-input {
+  margin-bottom: 20px;
+}
+
+.file-input input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed #667eea;
+  border-radius: 12px;
+  background: rgba(102, 126, 234, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.file-input input[type="file"]:hover {
+  border-color: #764ba2;
+  background: rgba(118, 75, 162, 0.1);
+}
+
+.preview {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin: 20px 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.preview:hover {
+  transform: scale(1.02);
+}
+
+.settings {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.selection {
+  flex: 1;
+  min-width: 140px;
+}
+
+.selection label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.85rem;
+}
+
+.selection input,
+.selection select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  background: white;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.selection input:focus,
+.selection select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.selection input[type="number"] {
+  text-align: center;
+}
+
+.generate {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.generate button {
+  padding: 15px 40px;
+  min-width: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.generate button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+}
+
+.generate button:active {
+  transform: translateY(0);
+}
+
+.output {
+  margin-top: 0;
+  min-height: 400px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.generated {
+  width: 100%;
+  height: 450px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.generated img {
+  max-width: 100%;
+  max-height: 80%;
+  object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.generated div {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 20px;
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  .input {
+    min-width: 100%;
+    max-width: 400px;
+  }
+  
+  .settings {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .selection {
+    min-width: 100%;
+  }
+  
+  .output {
+    max-width: 100%;
+  }
+  
+  .generated {
+    height: 350px;
+  }
+}
+
+/* 加载动画 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.generated div:contains("生成中"),
+.generated div:contains("上传中") {
+  animation: pulse 1.5s ease-in-out infinite;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.main {
+  float: left;
+  width: 100%;
+  background-color: #f0f0f0;
+}
+
+.main-content {
+  margin: 0 200px 0 150px; /* 为左右侧栏留出空间 */
+  min-height: 400px;
+  background-color: #fff;
+}
+
+.left {
+  float: left;
+  width: 150px;
+  margin-left: -100%; /* 移动到最左边 */
+  background-color: #ffcccb;
+  min-height: 400px;
+}
+
+.right {
+  float: left;
+  width: 200px;
+  margin-left: -200px; /* 移动到右边 */
+  background-color: #add8e6;
+  min-height: 400px;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+<body>
+  <div class="clearfix">
+    <div class="main">
+      <div class="main-content">主内容区域</div>
+    </div>
+    <div class="left">左侧栏</div>
+    <div class="right">右侧栏</div>
+  </div>
+</body>
+</html>

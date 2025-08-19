@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>一级页面</h1>
+    <iframe id="iframe" src="http://127.0.0.1:5500/postmessage/index1.html" width="800" height="700" frameborder="0"></iframe>
+
+    <script>
+        let obj = {
+            name: 'zz',
+            age: 18
+        }
+        let iframe = document.getElementById('iframe')
+        iframe.onload = function () {
+            iframe.contentWindow.postMessage(JSON.stringify(obj), 'http://127.0.0.1:5500')
+        }
+
+        window.onmessage = function (e) {
+            // console.log(e.data)
+        }
+    </script>
+
+
+</body>
+</html>

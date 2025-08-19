@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>二级页面 -- <span id="span"></span></h2>
+    
+    <script>
+        window.onmessage = function (e) {
+            console.log(`---${e.data}`)
+            let obj = JSON.parse(e.data)
+            let span = document.getElementById('span')
+            span.innerHTML = obj.name
+            e.source.postMessage('hello', e.origin)
+        }
+    </script>
+</body>
+</html>

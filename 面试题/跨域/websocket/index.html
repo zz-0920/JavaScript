@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function myWebSocket(url, params) {
+            return new Promise((resolve, reject) => {
+                const ws = new WebSocket(url)
+                ws.onopen = function () {
+                    ws.send(JSON.stringify(params))
+                }
+                ws.onmessage = function (data) {
+                    console.log(data.data)
+                    resolve(data.data)
+                }
+            })
+        }
+        myWebSocket('ws://localhost:3000', {
+        }).then(data => {
+            console.log(data)
+            name: 'zz'
+        })
+
+    </script>
+</body>
+</html>

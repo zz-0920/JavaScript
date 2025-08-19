@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://image.baidu.com/search/detail?ct=503316480&z=0&tn=baiduimagedetail&ipn=d&cl=2&cm=1&sc=0&sa=vs_ala_img_datu&lm=-1&ie=utf8&pn=3&rn=1&di=7523999300557209601&ln=0&word=%E5%A4%B4%E5%83%8F&os=1476090056,2998792&cs=1669020839,927897948&objurl=http%3A%2F%2Fiknow-pic.cdn.bcebos.com%2Fa9d3fd1f4134970af7a1f9b187cad1c8a6865d5a&bdtype=0&simid=3473813584,446923116&pi=0&adpicid=0&timingneed=&spn=0&is=1476090056,2998792&lid=c4d8261102547926" alt="">
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.core.js"></script>
+    <!-- <script src="http://localhost:3000?cb=callback"></script> -->
+
+    <script>
+        function jsonp(url, cb) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script')
+                script.src = `${url}?cb=${cb}`
+                // 提前准备一个名为 callback 的函数
+                window[cb] = function (data) {
+                    // console.log(data);
+                    resolve(data)
+                }
+                document.body.appendChild(script)
+            })
+        }
+        jsonp('http://localhost:3000', 'callback').then(res => {
+            console.log(res);
+        })
+
+
+    </script>
+</body>
+</html>

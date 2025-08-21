@@ -16,4 +16,3 @@ let obj = {
   a: 1
 }
 foo.myCall(obj, 2, 3)
-

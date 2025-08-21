@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">点击</button>
+  <script>
+    const btn = document.getElementById('btn')
+    const clickFn = function() {
+      console.log('点击了', this)
+    }
+    btn.addEventListener('click', throttle(clickFn, 1000))
+
+
+
+    function debounce(fn, delay) {
+      let timer = null
+      return function(...agrs) {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          fn.call(this, ...agrs)
+        }, delay)
+      }
+    }
+  
+    function throttle(fn, delay) {
+      let oldTime = Date.now()
+      return function(...args) {
+        let curTime = Date.now()
+        if (curTime - oldTime > delay) {
+          fn.call(this, ...args)
+          oldTime = Date.now()
+        }
+      }
+    }
+  </script>
+</body>
+</html>

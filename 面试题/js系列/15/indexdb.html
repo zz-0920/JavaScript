@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="msg"></p>
+  <button onclick="insertOneData()">插入一条数据</button>
+  <button onclick="queryDataByPrimaryKey()">查询一条数据</button>
+
+  <script>
+    const dbName = 'myDB'
+    const dbVersion = 1.0
+    let db;
+    // 关联数据库
+    function connectToDatabase() {
+      const request = indexedDB.open(dbName, dbVersion)
+      request.onupgradeneeded = (e) => {
+        db = e.target.result
+        if (!db.objectStoreNames.contains('user')) {
+          db.createObjectStore('user', {
+            keyPath: 'id'
+          })
+        }
+      }
+      request.onsuccess = (e) => {
+        db = e.target.result
+        document.getElementById('msg').innerHTML = '数据库创建成功'
+      }
+    }
+    connectToDatabase()
+
+
+
+    function insertOneData() {
+      // 事务（表）
+      const transaction = db.transaction(['user'], 'readwrite')
+      .objectStore('user')
+      .add({
+        id: 1001,
+        name: '张三',
+        age: 18
+      })
+    }
+  
+    function queryDataByPrimaryKey() {
+      const transaction = db.transaction(['user'], 'readonly')
+      const objectStore = transaction.objectStore('user') // 连接表
+      const request = objectStore.get(1001)
+      request.onsuccess = () => {
+        console.log(request.result)
+      }
+    }
+  </script>
+</body>
+</html>

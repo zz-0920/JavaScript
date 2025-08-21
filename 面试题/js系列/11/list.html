@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>
+      <div>1</div>
+    </li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <script>
+    // let lis = document.querySelectorAll('li')
+    // lis.forEach((item) => {
+    //   item.addEventListener('click', function () {  // 浪费内存
+    //     console.log(item.innerHTML)
+    //   })
+    // })
+
+
+    let ul = document.querySelector('ul')
+    ul.addEventListener('click', function (e) {
+      console.log(e);
+      
+      console.log(e.target.innerHTML);
+    })
+  </script>
+</body>
+</html>

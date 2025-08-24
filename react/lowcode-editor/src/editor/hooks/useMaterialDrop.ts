@@ -12,7 +12,7 @@ interface UseMaterialDropOptions {
 
 export function useMaterialDrop(options: UseMaterialDropOptions) {
   const { id, accept, onDropSuccess, fallbackProps } = options
-  const { addComponent } = useComponentsStore()
+  const { addComponent, setCurComponentID } = useComponentsStore()
   const { componentConfig } = useComponentConfigStore()
   const [messageApi, contextHolder] = message.useMessage()
 
@@ -38,6 +38,9 @@ export function useMaterialDrop(options: UseMaterialDropOptions) {
         props: (props && Object.keys(props).length > 0) ? props : fallbackProps,
         desc: desc
       }, typeof id === 'number' ? id : undefined)
+      
+      // 添加组件后清除选中状态，确保SelectedMask消失
+      setCurComponentID(null)
     },
     collect: (monitor) => ({
       canDrop: monitor.canDrop(),

@@ -166,7 +166,7 @@
      - 微任务：Promise.then, MutationObserver, process.nextTick(node.js)
      - 宏任务：script, setTimeout, setInterval, I/O, UI 渲染, postMessage, MessageChannel
 
-     1. 先执行同步代码 
+     1. 先执行同步代码
      2. 执行微任务
      3. 有需要的话就进行渲染
      4. 执行宏任务 (第二次事件循环的开始)

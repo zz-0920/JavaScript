@@ -107,14 +107,14 @@ export default function SelectedMask({ componentId, containerRef, onDelete }: Se
          <span className="font-medium">已选中</span>
        </div>
       
-      {/* 删除按钮 */}
-        <button
-          className="absolute top-1 right-1 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 active:bg-red-700 transition-colors duration-200 pointer-events-auto shadow-sm hover:shadow-md font-medium"
-          onClick={handleDelete}
-          title="删除组件"
-        >
-          delete
-        </button>
+      {/* 删除按钮 - 调整位置避免与调整手柄重叠 */}
+      <button
+        className="absolute -top-8 -right-1 px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 active:bg-red-700 transition-colors duration-200 pointer-events-auto shadow-sm hover:shadow-md font-medium"
+        onClick={handleDelete}
+        title="删除组件"
+      >
+        delete
+      </button>
       
       {/* 四个角的调整手柄 */}
        <div className="absolute -top-1.5 -left-1.5 w-3 h-3 bg-blue-500 rounded-full shadow-md border-2 border-white"></div>

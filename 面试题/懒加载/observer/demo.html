@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            height: 500px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <img lazyload="true" data-origin="https://img2.baidu.com/it/u=1719368497,5547036&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800" alt="">
+    <img lazyload="true" data-origin="https://img0.baidu.com/it/u=3048597925,2965730095&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img lazyload="true" data-origin="https://img2.baidu.com/it/u=3339047192,3348821969&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+    <img lazyload="true" data-origin="https://img0.baidu.com/it/u=3708018257,2441529547&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img lazyload="true" data-origin="https://img2.baidu.com/it/u=1682380189,2256325493&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img lazyload="true" data-origin="https://img2.baidu.com/it/u=1393496453,945895472&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500" alt="">
+    <img lazyload="true" data-origin="https://img1.baidu.com/it/u=2430537903,2870628280&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img lazyload="true" data-origin="https://img2.baidu.com/it/u=1987148419,4088635087&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img lazyload="true" data-origin="https://img1.baidu.com/it/u=2357609465,3228209964&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img lazyload="true" data-origin="https://img2.baidu.com/it/u=4238874257,3004049163&fm=253&fmt=auto&app=120&f=JPEG?w=541&h=304" alt="">
+    <img lazyload="true" data-origin="https://img2.baidu.com/it/u=1852918273,152788134&fm=253&fmt=auto&app=120&f=JPEG?w=1139&h=712" alt="">
+    <img lazyload="true" data-origin="https://bpic.588ku.com/video_library/cover/24/09/20/56e3b606d41a95b7d279c17a030dc9b4_snapshot_t0.jpg"alt="">
+    <img lazyload="true" data-origin="https://img1.baidu.com/it/u=4283366487,4202559675&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800" alt="">
+    <img lazyload="true" data-origin="https://img0.baidu.com/it/u=893874537,719635393&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img lazyload="true" data-origin="https://gbres.dfcfw.com/Files/iimage/20240323/57925CD649CFE009CCCA98FE52E468C4_w5404h3638.jpg" alt="">
+    <img lazyload="true" data-origin="https://img0.baidu.com/it/u=855319930,4275932786&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800" alt=""> 
+    <img lazyload="true" data-origin="https://img0.baidu.com/it/u=1241101883,3290258568&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+    <img lazyload="true" data-origin="https://n.sinaimg.cn/sinakd20110/0/w2048h1152/20240624/e3bb-814bbab996807e6d8233c13903d06e17.jpg" alt="">
+    <img lazyload="true" data-origin="https://picx.zhimg.com/v2-67f576a3f58ab2d5d2eef07dcb7b14a3_r.jpg" alt="">
+    <img lazyload="true" data-origin="https://img1.baidu.com/it/u=719435224,3466476338&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800" alt="">
+    <img lazyload="true" data-origin="https://img0.baidu.com/it/u=1340708445,1349846606&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="">
+
+
+    <script>
+        const io = new IntersectionObserver((entries) => {
+            console.log(entries);
+
+            
+            entries.forEach(item => {
+                if (item.isIntersecting) {
+                    const img = item.target
+                    img.src = img.dataset.origin
+                    io.unobserve(img)
+                    img.removeAttribute('lazyload')
+                }
+            })
+        })
+        document.querySelectorAll('img[lazyload][data-origin]').forEach(item => {
+            io.observe(item)
+        })
+
+
+
+    </script>
+</body>
+</html>

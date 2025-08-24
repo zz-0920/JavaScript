@@ -98,9 +98,14 @@ export const useComponentsStore = create<State & Action>(
                 if (component) {
                     // 合并新属性到现有属性中（保持不可变性）
                     component.props = { ...component.props, ...props }
+                    
+                    // 如果更新的是当前选中的组件，同时更新curComponent
+                    const newCurComponent = state.curComponentID === componentId ? component : state.curComponent
+                    
                     return {
                         // 返回新的状态（浅拷贝数组以触发重新渲染）
-                        components: [...state.components]
+                        components: [...state.components],
+                        curComponent: newCurComponent
                     }
                 }
                 // 如果没找到组件，返回原状态

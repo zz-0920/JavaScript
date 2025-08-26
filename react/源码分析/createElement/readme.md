@@ -5,13 +5,13 @@
 
 
 # React.createElement 在干嘛
-1. babel 会调用 React.createElement('div', { className: 'gretting' }, 'hello world')
-2. React.createElement 会 调用 ReactElement 并返回一个对象
+1. babel 会调用 React.createElement('div', { className: 'greeting' }, 'hello world')
+2. React.createElement 会调用 ReactElement 并返回一个对象
   { 
     $$typeof: Symbol(react.element),
     type: 'div', 
     props: { 
-      className: 'gretting', 
+      className: 'greeting', 
       children: 'hello world' 
     } ,
     key: null,
@@ -19,6 +19,7 @@
   }
 3. react 会根据这个对象，用 DOM 方法创建一个 div 元素
   const div = document.createElement('div')
-  div.className = 'gretting'
+  div.className = 'greeting'
   div.innerHTML = React.createElement(child)  // 'hello world'
-
+4. react 会将这个 div 元素添加到页面中
+  document.body.appendChild(div)

@@ -1,19 +1,19 @@
 const element = (
-  <h1 className="gretting">
+  <h1 className="greeting">
     hello world
   </h1>
 )
 
 const element = React.createElement(
   'h1',
-  { className: 'gretting' },
+  { className: 'greeting' },
   'hello world'
 )
 
 const element = {
   type: 'h1',
   props: {
-    className: 'gretting',
+    className: 'greeting',
     children: 'hello world',
   }
 }

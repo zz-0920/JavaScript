@@ -1,6 +1,5 @@
 import { createRoot } from 'react-dom/client'
 import React from 'react'
-import { createPortal } from 'react-dom'
 
 const root = createRoot(document.getElementById('root'))
 

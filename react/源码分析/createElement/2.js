@@ -6,10 +6,10 @@
 
 React.createElement(
   'div',
-  {id: 'foo'},
-  React.createElement('div', {id: 'bar'}, 'bar'),
-  React.createElement('div', {id: 'baz'}, 'baz'),
-  React.createElement('div', {id: 'qux'}, 'qux'),
+  { id: 'foo' },
+  React.createElement('div', { id: 'bar' }, 'bar'),
+  React.createElement('div', { id: 'baz' }, 'baz'),
+  React.createElement('div', { id: 'qux' }, 'qux'),
 )
 
 props = {

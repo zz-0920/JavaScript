@@ -1,6 +1,7 @@
 {
   "name": "createelement",
   "version": "1.0.0",
+  "description": "1. 浏览器读不懂 jsx ，需要使用 babel 编译成 js 代码 2. JSX 是怎么被浏览器执行出效果的   1. react 会将 jsx 用 React.createElement 方法转换为 js 代码",
   "main": "1.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -8,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "type": "commonjs",
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1"

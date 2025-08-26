@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const source = [
+      {
+        province_name: "北京市",
+        province_code: "110000",
+        city_name: "北京市",
+        city_code: "110000",
+        district_name: "东城区",
+        district_code: "110101",
+      },
+      {
+        province_name: "北京市",
+        province_code: "110000",
+        city_name: "北京市",
+        city_code: "110000",
+        district_name: "西城区",
+        district_code: "110102",
+      },
+      {
+        province_name: "北京市",
+        province_code: "110000",
+        city_name: "北京市",
+        city_code: "110000",
+        district_name: "朝阳区",
+        district_code: "110105",
+      },
+      {
+        province_name: "北京市",
+        province_code: "110000",
+        city_name: "北京市",
+        city_code: "110000",
+        district_name: "海淀区",
+        district_code: "110108",
+      },
+      {
+        province_name: "上海市",
+        province_code: "310000",
+        city_name: "上海市",
+        city_code: "310000",
+        district_name: "黄浦区",
+        district_code: "310101",
+      },
+      {
+        province_name: "上海市",
+        province_code: "310000",
+        city_name: "上海市",
+        city_code: "310000",
+        district_name: "徐汇区",
+        district_code: "310104",
+      },
+      {
+        province_name: "上海市",
+        province_code: "310000",
+        city_name: "上海市",
+        city_code: "310000",
+        district_name: "长宁区",
+        district_code: "310105",
+      },
+      {
+        province_name: "上海市",
+        province_code: "310000",
+        city_name: "上海市",
+        city_code: "310000",
+        district_name: "浦东新区",
+        district_code: "310115",
+      },
+      {
+        province_name: "四川省",
+        province_code: "510000",
+        city_name: "成都市",
+        city_code: "510100",
+        district_name: "锦江区",
+        district_code: "510104",
+      },
+      {
+        province_name: "四川省",
+        province_code: "510000",
+        city_name: "成都市",
+        city_code: "510100",
+        district_name: "青羊区",
+        district_code: "510105",
+      },
+      {
+        province_name: "四川省",
+        province_code: "510000",
+        city_name: "成都市",
+        city_code: "510100",
+        district_name: "金牛区",
+        district_code: "510106",
+      },
+      {
+        province_name: "四川省",
+        province_code: "510000",
+        city_name: "绵阳市",
+        city_code: "510700",
+        district_name: "涪城区",
+        district_code: "510703",
+      },
+      {
+        province_name: "四川省",
+        province_code: "510000",
+        city_name: "绵阳市",
+        city_code: "510700",
+        district_name: "游仙区",
+        district_code: "510704",
+      },
+      {
+        province_name: "四川省",
+        province_code: "510000",
+        city_name: "德阳市",
+        city_code: "510600",
+        district_name: "旌阳区",
+        district_code: "510603",
+      },
+      {
+        province_name: "重庆市",
+        province_code: "500000",
+        city_name: "重庆市",
+        city_code: "500000",
+        district_name: "万州区",
+        district_code: "500101",
+      },
+      {
+        province_name: "重庆市",
+        province_code: "500000",
+        city_name: "重庆市",
+        city_code: "500000",
+        district_name: "涪陵区",
+        district_code: "500102",
+      },
+      {
+        province_name: "重庆市",
+        province_code: "500000",
+        city_name: "重庆市",
+        city_code: "500000",
+        district_name: "渝中区",
+        district_code: "500103",
+      },
+      {
+        province_name: "重庆市",
+        province_code: "500000",
+        city_name: "重庆市",
+        city_code: "500000",
+        district_name: "江北区",
+        district_code: "500105",
+      },
+      {
+        province_name: "重庆市",
+        province_code: "500000",
+        city_name: "重庆市",
+        city_code: "500000",
+        district_name: "南岸区",
+        district_code: "500108",
+      },
+    ]
+
+
+    const cascaderData = [
+      {
+        label: "北京市",
+        value: "110000",
+        children: [
+          {
+            label: "北京市",
+            value: "110000",
+            children: [
+              { label: "东城区", value: "110101" },
+              { label: "西城区", value: "110102" },
+              { label: "朝阳区", value: "110105" },
+              { label: "海淀区", value: "110108" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "上海市",
+        value: "310000",
+        children: [
+          {
+            label: "上海市",
+            value: "310000",
+            children: [
+              { label: "黄浦区", value: "310101" },
+              { label: "徐汇区", value: "310104" },
+              { label: "长宁区", value: "310105" },
+              { label: "浦东新区", value: "310115" },
+            ],
+          },
+        ],
+      },
+      {
+        label: "四川省",
+        value: "510000",
+        children: [
+          {
+            label: "成都市",
+            value: "510100",
+            children: [
+              { label: "锦江区", value: "510104" },
+              { label: "青羊区", value: "510105" },
+              { label: "金牛区", value: "510106" },
+            ],
+          },
+          {
+            label: "绵阳市",
+            value: "510700",
+            children: [
+              { label: "涪城区", value: "510703" },
+              { label: "游仙区", value: "510704" },
+            ],
+          },
+          {
+            label: "德阳市",
+            value: "510600",
+            children: [{ label: "旌阳区", value: "510603" }],
+          },
+        ],
+      },
+      {
+        label: "重庆市",
+        value: "500000",
+        children: [
+          {
+            label: "重庆市",
+            value: "500000",
+            children: [
+              { label: "万州区", value: "500101" },
+              { label: "涪陵区", value: "500102" },
+              { label: "渝中区", value: "500103" },
+              { label: "江北区", value: "500105" },
+              { label: "南岸区", value: "500108" },
+            ],
+          },
+        ],
+      },
+    ];
+
+    function getCascaderData(source) {
+      const res = []
+      let provinceName = ''
+      let cityName = ''
+      for (const item of source) {
+        const { province_name, province_code, city_name, city_code, district_name, district_code } = item
+
+        const provinceObj = provinceName !== province_name ? {
+          label: province_name,
+          value: province_code,
+          children: []
+        } : res.find(province => {
+          if (province.label === province_name) {
+            return province
+          }
+        })
+        const cityObj = cityName !== city_name ? {
+          label: city_name,
+          value: city_code,
+          children: []
+        } : findObj(res, city_name)
+
+        const districtObj = {
+          label: district_name,
+          value: district_code
+        }
+        cityObj.children.push(districtObj)
+
+        if (cityName !== cityObj.label) {
+          provinceObj.children.push(cityObj)
+          cityName = city_name
+        }
+
+
+        if (provinceName !== provinceObj.label) {
+          res.push(provinceObj)
+          provinceName = province_name
+        }
+
+      }
+
+      return res
+    }
+
+    console.log(getCascaderData(source));
+
+
+    function findObj(arr, city_name) {
+      for (let i = 0; i < arr.length; i++) {
+        const province = arr[i];
+        for (const city of province.children) {
+          if (city.label === city_name) {
+            return city
+          }
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "file": "index.js",
+    "sourceRoot": "",
+    "sources": [
+        "../../src/index.jsx"
+    ],
+    "names": [],
+    "mappings": ";;;AAAA,MAAM,OAAO,GAAG,4CACZ,uBAAC,KAAK,+BAAW,EACjB,8BAAG,IAAI,EAAC,KAAK,qBAAS,IACpB,CAAA"
+}

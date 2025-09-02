@@ -1,0 +1,15 @@
+{
+  "name": "min-react",
+  "version": "1.0.0",
+  "description": "1. jsx ==> 虚拟dom ==> 真实dom",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

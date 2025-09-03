@@ -23,30 +23,7 @@ function C() {
   })
 }
 
-// Promise.race([A(), B(), C()]).then(
-//   (res) => {
-//     console.log(res, 'res')
-//   },
-//   (err) => {
-//     console.log(err, 'err')
-//   }
-// )
-
-// Promise.all([A(), B(), C()]).then(
-//   (res) => {
-//     console.log(res, 'res')
-//   },
-//   (err) => {
-//     console.log(err, 'err')
-//   }
-// )
-
-Promise.any([A(), B(), C()]).then(
-  (res) => {
-    console.log(res, 'res')
-  },
-  (err) => {
-    console.log(err, 'err')
-  }
-)
-
+Promise.allSettled([A(), B(), C()])
+.then((res) => {
+  console.log(res)
+})

@@ -30,23 +30,63 @@
     - 如果then方法中抛出异常，新Promise会变为rejected状态，并将异常信息传递给下一个catch
   - 多个then调用：一个Promise对象可以注册多个then方法，它们会按注册顺序依次执行
 
-# race
+## race
 - 多个 Promise 对象并行执行，进行"赛跑"，哪个 Promise 先完成（无论是成功还是失败），就返回哪个 Promise 的结果
 - race 方法返回一个新的 Promise 对象
 - 第一个完成的 Promise 如果是 fulfilled 状态，race 返回的 Promise 就变为 fulfilled 状态，并传递该 Promise 的值
 - 第一个完成的 Promise 如果是 rejected 状态，race 返回的 Promise 就变为 rejected 状态，并传递该 Promise 的拒绝原因
 - 一旦有一个 Promise 完成（无论成功或失败），其他 Promise 的结果将被忽略，即使它们已经开始执行
 
-# all
+## all
 - 多个 Promise 对象并行执行，等待所有 Promise 对象完成
 - all 方法返回一个新的 Promise 对象
 - 如果所有 Promise 对象的状态都变为 fulfilled，那么 all 方法返回的 Promise 状态变为 fulfilled，并返回一个包含所有 Promise 结果的数组（顺序与传入的 Promise 数组顺序一致）
 - 如果任何一个 Promise 对象的状态变为 rejected，那么 all 方法返回的 Promise 状态会立即变为 rejected，并传递第一个被拒绝的原因
 - Promise.all 具有"快速失败"特性：只要有一个 Promise 失败，就会立即停止等待并返回失败
 
-# any
+## any
 - 多个 Promise 对象并行执行，等待任意一个 Promise 对象变为 fulfilled 状态
 - any 方法返回的 Promise 对象的状态由第一个变为 fulfilled 的 Promise 对象决定
 - 如果任意一个 Promise 对象的状态是 fulfilled，那么 any 方法返回的 Promise 对象的状态就会变为 fulfilled
 - 只有当所有 Promise 对象的状态都是 rejected 时，any 方法返回的 Promise 对象的状态才会变为 rejected
 - 一旦有一个 Promise 变为 fulfilled，其他 Promise 的结果将被忽略
+
+
+
+# Generator 函数
+- 生成器函数是一种特殊的函数，它可以暂停执行并在稍后恢复
+- 生成器函数的定义与普通函数类似，只是在函数名前加上星号(*)
+- 生成器函数内部可以使用yield关键字来暂停执行并返回一个值
+- 生成器函数返回的是一个迭代器对象，通过调用迭代器对象的next方法可以恢复执行
+- 生成器函数的执行过程中可以使用try-catch语句来捕获异常
+- 生成器函数的执行过程中可以使用return语句来结束执行并返回一个值
+
+## yield
+- yield 关键字用于暂停生成器函数的执行并返回一个值
+- yield 关键字可以在生成器函数内部使用多次，每次调用 yield 关键字都会暂停执行并返回一个值
+- yield 关键字返回的值可以是任意类型，包括对象、数组、函数等
+- yield 关键字可以与 for...of 循环结合使用，实现遍历生成器函数返回的多个值
+
+## next
+- next 方法用于恢复生成器函数的执行并返回一个对象
+- 第一次调用 next 方法会启动生成器函数的执行，直到遇到第一个 yield 表达式
+- next 方法可以接受一个参数，该参数会作为上一个 yield 表达式的返回值（第一次调用传递的参数会被忽略）
+- next 方法返回的对象包含两个属性：value 和 done
+  - value 属性表示当前 yield 表达式的返回值（或 return 语句的值）
+  - done 属性表示生成器函数是否执行完毕（true 表示已执行完毕，false 表示未执行完毕）
+- 调用 next 方法时可以传递任意类型的参数，包括对象、数组、函数等
+- 不传递参数时，参数的值为 undefined
+- 当生成器函数执行到 return 语句时，next 方法返回的对象中 done 为 true，value 为 return 语句的值
+
+# async-await
+- async 函数是基于Promise的语法糖，用于简化异步操作的编写
+- async 函数的定义与普通函数类似，只是在函数名前加上 async 关键字
+- async 函数**总是返回一个Promise对象**，函数内部的return值会成为该Promise的resolved值
+- async 函数内部可以使用 await 关键字来暂停执行并等待一个 Promise 对象的完成
+- await 关键字只能在 async 函数内部使用，不能在普通函数内部使用
+- await 关键字后面可以跟着一个 Promise 对象，也可以跟着一个普通值
+  - 如果跟着 Promise 对象，会暂停执行直到 Promise 完成，并返回 Promise 的 resolved 值
+  - 如果跟着普通值，会将其包装成一个 resolved 状态的 Promise 并返回该值
+- async 函数的执行过程中可以使用 try-catch 语句来捕获 await 表达式可能抛出的异常
+- 如果 await 后面的 Promise 被 reject 且未被捕获，会导致 async 函数返回的 Promise 被 reject
+- async-await 本质上是 Generator 函数和 Promise 的语法糖，使异步代码更简洁、更易读

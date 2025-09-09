@@ -25,6 +25,7 @@
   - 状态转换规则：只能从pending转变为fulfilled或从pending转变为rejected，且一旦转变不可逆
   - then方法的链式调用：
     - then方法返回一个新的Promise对象，因此可以链式调用
+    - 如果then方法中没有返回值，新Promise会变为fulfilled状态，并将undefined传递给下一个then
     - 如果then方法中返回的是普通值，新Promise会变为fulfilled状态，并将该值传递给下一个then
     - 如果then方法中返回的是Promise对象，新Promise的状态由返回的Promise决定
     - 如果then方法中抛出异常，新Promise会变为rejected状态，并将异常信息传递给下一个catch

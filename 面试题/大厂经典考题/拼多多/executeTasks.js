@@ -88,7 +88,7 @@ const makeTask = (index, successRate = 0.5) => {
   return () => {
     return new Promise((resolve, reject) => {
       return setTimeout(() => {
-        return Math.random() > successRate 
+        return Math.random() < successRate 
           ? resolve(`task ${index} success`) 
           : reject(new Error(`task ${index} failed`));
       }, 100);

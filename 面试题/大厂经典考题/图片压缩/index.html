@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="fileInput">
+    <button id="compressBtn">压缩图片</button>
+    <script>
+        const compressBtn = document.getElementById('compressBtn')
+        const fileInput = document.getElementById('fileInput')
+        let file = null
+
+        fileInput.addEventListener('change', (e) => {
+            // console.log(e);
+            file = e.target.files[0]
+        })
+
+        compressBtn.addEventListener('click', () => {
+            if (!file) return
+            compressImage(file, 0.8).then((imgBase64) => {
+                const div = document.createElement('div')
+                const img = document.createElement('img')
+                const span = document.createElement('span')
+                img.src = imgBase64
+                span.innerText = `压缩前: ${file.size / 1024}kb, 压缩后: ${getBase64Size(imgBase64)}`
+                div.appendChild(img)
+                div.appendChild(span)
+                document.body.appendChild(div)
+            })
+        })
+
+        function compressImage(file, quality) {
+            return new Promise((resolve) => {
+                const reader = new FileReader()
+                reader.onload = () => { // 读取文件成功的回调
+                    console.log(reader.result);
+                    const img = new Image()
+                    img.src = reader.result
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas')
+                        const ctx = canvas.getContext('2d')
+                        canvas.width = img.width
+                        canvas.height = img.height
+                        ctx.drawImage(img, 0, 0, img.width, img.height)
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', quality) // 将画布上的图像压缩为 jpeg
+                        resolve(compressedBase64)
+                    }
+                }
+                reader.readAsDataURL(file)
+            })
+        }
+
+
+        function getBase64Size(base64Str) {
+            const len = base64Str.length
+            // base64 字符所占用的字节数是 3 个字节
+            // 4 个 base64 字符 == 3 个原始字节
+            const bytes = len * 3 / 4
+            const size = bytes / 1024
+            return size.toFixed(2)
+        }
+    </script>
+</body>
+
+</html>

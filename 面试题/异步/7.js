@@ -10,7 +10,7 @@ function B() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log('B')
-      reject('B failed')
+      resolve('B success')
     }, 500)
   })
 }

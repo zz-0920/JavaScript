@@ -1,24 +1,18 @@
 function add(arr) {
-    // 从数组末尾开始处理（个位数开始）
-    let carry = 1; // 初始进位为1（因为要加1）
-    
-    // 从右到左遍历数组
+    let carry = 1
+
     for (let i = arr.length - 1; i >= 0; i--) {
-        let sum = arr[i] + carry;
-        arr[i] = sum % 10;  // 当前位的值
-        carry = Math.floor(sum / 10);  // 进位
-        
-        // 如果没有进位了，可以提前结束
+        let sum = arr[i] + carry
+        arr[i] = sum % 10
+        carry = Math.floor(sum / 10)
+
         if (carry === 0) {
-            break;
+            break
         }
     }
-    
-    // 如果最后还有进位，需要在数组开头添加
     if (carry > 0) {
-        arr.unshift(carry);
+        arr.unshift(carry)
     }
-    
     return arr;
 }
 

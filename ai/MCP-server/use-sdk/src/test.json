@@ -1,0 +1,20 @@
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "initialize",
+    "params": {
+        "capabilities": {
+            "elicitation": {},
+            "roots": {
+                "listChanged": true
+            },
+            "sampling": {}
+        },
+        "clientInfo": {
+            "name": "ExampleClient",
+            "title": "Example Client",
+            "version": "1.0.0"
+        },
+        "protocolVersion": "2025-06-18"
+    }
+}

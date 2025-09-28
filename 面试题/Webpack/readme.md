@@ -1,30 +1,39 @@
 # create-react-app
- - 由 webpack 封装得到
- - webpack 将整个项目的所有的依赖文件进行读取，解析，打包成浏览器可以识别的静态资源文件
+- 由 webpack 封装得到
+- webpack 将整个项目的所有的依赖文件进行读取，解析，打包成浏览器可以识别的静态资源文件
 
-# webpack 
- 1. webpack 只能打包 js 后缀的文件
- 2. 遇到高版本的 js 代码，webpack 无法直接打包, 需要使用 babel 进行转换
-  @babel/core  核心模块
-  @babel/preset-env  提供一个 babel 的配置文件给到我们
-  babel-loader  加载器（将babel 集成到 webpack）
+# webpack 核心概念
+1. **Entry（入口）**：打包的起始点
+2. **Output（输出）**：打包后文件的输出位置和命名
+3. **Loader（加载器）**：处理非 JS 文件（CSS、图片、TS 等）
+4. **Plugin（插件）**：执行更复杂的任务（优化、压缩等）
+5. **Module（模块）**：webpack 中一切皆模块
+6. **Chunk（代码块）**：多个模块的集合
 
-
+# Babel 集成
+- **@babel/core**：Babel 核心模块，提供转换 API
+- **@babel/preset-env**：智能预设，根据目标环境自动选择需要的插件
+- **babel-loader**：webpack 的 loader，将 Babel 集成到 webpack 构建流程
 
 # 打包流程
-1. 读取项目的入口文件代码
-2. 分析代码，递归的去读取模块依赖的文件内容，生成 AST 语法树 （用对象描述代码）
-3. 根据 AST 语法树，生成低版本的 js 代码
+1. **解析入口**：从 entry 开始解析依赖关系
+2. **构建依赖图**：递归分析所有模块依赖，生成依赖图
+3. **AST 转换**：使用 @babel/parser 将代码转为 AST
+4. **代码转换**：
+   - 使用 @babel/traverse 遍历 AST
+   - 使用 @babel/preset-env 进行语法降级
+   - 收集依赖关系
+5. **生成 Bundle**：将所有模块打包成最终的输出文件
 
-- 具体细节：
-1. 获取主模块的内容  fs
-2. 分析模块  @babel/parser (将代码转为 AST)
-3. 对 AST 语法进行处理   @babel/traverse
-    (遍历AST依赖收集)
-    (降 js 版本)  @babel/preset-env  @babel/core
-    (递归依赖收集)
-4. 生成新的代码 
+# 性能问题
+## 为什么慢？
+1. **冷启动慢**：首次构建需要分析所有依赖
+2. **重复工作**：每次修改都重新构建整个依赖图
+3. **文件 I/O**：大量的文件读写操作
+4. **转换开销**：Babel 转换和 AST 解析耗时
 
-
-# 为什么慢？
-每次修改代码，webpack 都会从入口文件开始读取、分析、递归获取依赖，然后生成一份最新的代码给浏览器执行
+## 优化方案
+1. **缓存**：使用 cache 配置启用持久化缓存
+2. **增量构建**：只重新构建变更的模块
+3. **并行处理**：使用 thread-loader 或 parallel-webpack
+4. **代码分割**：使用 splitChunks 减少重复打包
